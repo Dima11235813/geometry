@@ -5,6 +5,7 @@ class App extends Component {
   constructor(){
     super()
     const seedSizeOfCircle = 50
+    const scaleRatio = .01
     this.state = {
       circles: new Array(50).fill(true),
       containerStyles: {
@@ -17,16 +18,18 @@ class App extends Component {
         justifyItems: "center",
         alignItems: "center"
       },
-      sizeOfCircle: seedSizeOfCircle
+      sizeOfCircle: seedSizeOfCircle,
+      scaleRatio: scaleRatio
     }
   }
   changeSizeOfCircle = (context) => {
     context.setState({
-      sizeOfCircle: context.state.sizeOfCircle + 1
+      sizeOfCircle: context.state.sizeOfCircle + 1,
+      scaleRatio: context.state.scaleRatio + .01
     })
   }
   componentDidMount = () => {
-    setInterval(this.changeSizeOfCircle,1000, this)
+    setInterval(this.changeSizeOfCircle,10, this)
   }
   render() {
     const {
